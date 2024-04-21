@@ -6,7 +6,7 @@ import { Session } from '@/lib/types'
 import { getMissingKeys } from '../actions'
 
 export const metadata = {
-  title: "## :rainbow[Le Spéc'IA'liste Du Vrac]"
+  title: "## Le Spéc'IA'liste Du Vrac"
 }
 
 export default async function IndexPage() {
