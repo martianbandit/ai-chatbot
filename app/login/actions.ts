@@ -23,7 +23,7 @@ export async function authenticate(
 ): Promise<Result | undefined> {
   try {
     const email = formData.get('email')
-    const password = formData.get('password')
+    const password = formData.get('mot de passe')
 
     const parsedCredentials = z
       .object({
@@ -32,30 +32,30 @@ export async function authenticate(
       })
       .safeParse({
         email,
-        password
+        mot de passe
       })
 
     if (parsedCredentials.success) {
-      await signIn('credentials', {
+      await signIn('infocompte', {
         email,
-        password,
+        mot de passe,
         redirect: false
       })
 
       return {
-        type: 'success',
+        type: 'succès',
         resultCode: ResultCode.UserLoggedIn
       }
     } else {
       return {
-        type: 'error',
+        type: 'erreur',
         resultCode: ResultCode.InvalidCredentials
       }
     }
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
-        case 'CredentialsSignin':
+        case 'inscriptioninfocompte':
           return {
             type: 'error',
             resultCode: ResultCode.InvalidCredentials
